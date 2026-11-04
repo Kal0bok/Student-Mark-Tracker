@@ -46,5 +46,5 @@ public class Main {
             return "Terrible";
         }
     }
-
+//Finished project
 }
