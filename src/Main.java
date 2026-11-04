@@ -15,6 +15,14 @@ public class Main {
                 studentMarks[i][j] = random.nextInt(10) + 1;
             }
         }
+        for(int i = 0; i < studentMarks.length;i++){
+            //Function for computing average grade
+            double average = computeMarks(studentMarks[i]);
+            //Function for grades classify
+            String gradeCategory = classifyGrade(average);
+
+            System.out.println("Student " + (i + 1) + " average " + average + " | Class: " + gradeCategory);
+        }
     }
 
     public static double computeMarks(int[] studentMarks){
