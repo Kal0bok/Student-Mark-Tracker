@@ -7,7 +7,7 @@ public class Main {
 
         //Student marks array
         int[][] studentMarks = new int[3][4];
-t 
+
         //Function to go throw rows and columns
         for(int i = 0; i < studentMarks.length; i++) {
             for (int j = 0; j < studentMarks[i].length; j++) {
@@ -26,4 +26,17 @@ t
         }
         return (double) sum / studentMarks.length;
     }
+
+    public static String classifyGrade(double average){
+        if(average >= 8.5){
+            return "Excellent";
+        }else if(average >= 5.0){
+            return "Good";
+        }else if(average >= 5.0){
+            return "Average";
+        }else{
+            return "Terrible";
+        }
+    }
+
 }
