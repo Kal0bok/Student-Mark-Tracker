@@ -2,23 +2,34 @@ import java.util.Random;
 
 public class Main {
 
+    private static final int NUMBER_OF_STUDENTS = 3;
+    private static final int STUDENT_MARKS_COUNT = 4;
+
+    // Threshold constants for grading
+    private static final double EXCELLENT_THRESHOLD = 8.5;
+    private static final double GOOD_THRESHOLD = 7.0;
+    private static final double AVERAGE_THRESHOLD = 5.0;
+
     public static void main(String[] args) {
         Random random = new Random();
 
-        //Student marks array
-        int[][] studentMarks = new int[3][4];
+        // Student marks array
+        int[][] studentMarks = new int[NUMBER_OF_STUDENTS][STUDENT_MARKS_COUNT];
 
-        //Function to go throw rows and columns
+        // Function to go throw rows and columns
         for(int i = 0; i < studentMarks.length; i++) {
             for (int j = 0; j < studentMarks[i].length; j++) {
-                //Function "Random" to fill marks for students
+                // Function "Random" to fill marks for students
                 studentMarks[i][j] = random.nextInt(10) + 1;
             }
         }
-        for(int i = 0; i < studentMarks.length;i++){
-            //Function for computing average grade
+
+        printGrades(studentMarks);
+    }
+
+    public static void printGrades(int[][] studentMarks) {
+        for(int i = 0; i < studentMarks.length; i++){
             double average = computeMarks(studentMarks[i]);
-            //Function for grades classify
             String gradeCategory = classifyGrade(average);
 
             System.out.println("Student " + (i + 1) + " average " + average + " | Class: " + gradeCategory);
@@ -26,25 +37,25 @@ public class Main {
     }
 
     public static double computeMarks(int[] studentMarks){
-        int sum = 0;
+        double sum = 0.0;
 
-        //Function go throw array and summ all marks
+        // Function go throw array and summ all marks
         for(int mark : studentMarks){
             sum += mark;
         }
-        return (double) sum / studentMarks.length;
+        return sum / studentMarks.length;
     }
 
     public static String classifyGrade(double average){
-        if(average >= 8.5){
+        // Fixed duplicate conditions and fixed thresholds logic
+        if(average >= EXCELLENT_THRESHOLD){
             return "Excellent";
-        }else if(average >= 5.0){
+        }else if(average >= GOOD_THRESHOLD){
             return "Good";
-        }else if(average >= 5.0){
+        }else if(average >= AVERAGE_THRESHOLD){
             return "Average";
         }else{
             return "Terrible";
         }
     }
-//Finished project
 }
