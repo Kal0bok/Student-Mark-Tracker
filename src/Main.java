@@ -5,6 +5,11 @@ public class Main {
     private static final int NUMBER_OF_STUDENTS = 3;
     private static final int STUDENT_MARKS_COUNT = 4;
 
+    // Threshold constants for grading
+    private static final double EXCELLENT_THRESHOLD = 8.5;
+    private static final double GOOD_THRESHOLD = 7.0;
+    private static final double AVERAGE_THRESHOLD = 5.0;
+
     public static void main(String[] args) {
         Random random = new Random();
 
@@ -32,7 +37,6 @@ public class Main {
     }
 
     public static double computeMarks(int[] studentMarks){
-        // Changed sum type to double to avoid explicit casting
         double sum = 0.0;
 
         // Function go throw array and summ all marks
@@ -43,11 +47,12 @@ public class Main {
     }
 
     public static String classifyGrade(double average){
-        if(average >= 8.5){
+        // Fixed duplicate conditions and fixed thresholds logic
+        if(average >= EXCELLENT_THRESHOLD){
             return "Excellent";
-        }else if(average >= 5.0){
+        }else if(average >= GOOD_THRESHOLD){
             return "Good";
-        }else if(average >= 5.0){
+        }else if(average >= AVERAGE_THRESHOLD){
             return "Average";
         }else{
             return "Terrible";
