@@ -19,11 +19,9 @@ public class Main {
             }
         }
 
-        // Extracted printing logic into a separate method
         printGrades(studentMarks);
     }
 
-    // New method to print grades and categories
     public static void printGrades(int[][] studentMarks) {
         for(int i = 0; i < studentMarks.length; i++){
             double average = computeMarks(studentMarks[i]);
@@ -34,13 +32,14 @@ public class Main {
     }
 
     public static double computeMarks(int[] studentMarks){
-        int sum = 0;
+        // Changed sum type to double to avoid explicit casting
+        double sum = 0.0;
 
         // Function go throw array and summ all marks
         for(int mark : studentMarks){
             sum += mark;
         }
-        return (double) sum / studentMarks.length;
+        return sum / studentMarks.length;
     }
 
     public static String classifyGrade(double average){
